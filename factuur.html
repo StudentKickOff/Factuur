@@ -1,101 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title>Invoice</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="license" href="http://www.opensource.org/licenses/mit-license/">
-  <!-- Normalize or reset CSS with your favorite library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
-
-  <!-- Load paper.css for happy printing -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.2.3/paper.css">
-
-  <!-- Set page size here: A5, A4 or A3 -->
+  <head>
+    <meta charset="utf-8">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="license" href="http://www.opensource.org/licenses/mit-license/">
+    <!-- Normalize or reset CSS with your favorite library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <!-- Load paper.css for happy printing -->
+    <link rel="stylesheet" href="node_modules/paper-css/paper.min.css">
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <!-- Set page size here: A5, A4 or A3 -->
+    <!-- Set also "landscape" if you need -->
+    <style>@page { size: A4 }</style>
+  </head>
+  <!-- Set "A5", "A4" or "A3" for class name -->
   <!-- Set also "landscape" if you need -->
-  <style>@page { size: A4 }</style>
-</head>
-
-<!-- Set "A5", "A4" or "A3" for class name -->
-<!-- Set also "landscape" if you need -->
-<body class="A4">
-
-  <!-- Each sheet element should have the class "sheet" -->
-  <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
-  <section class="sheet padding-10mm">
-    <header>
-      <h1>Invoice</h1>
-      <address>
-        <p>Jonathan Neal</p>
-        <p>101 E. Chapman Ave<br>Orange, CA 92866</p>
-        <p>(800) 555-1234</p>
-      </address>
-      <img alt="" src="logo.png"><input type="file" accept="image/*">
-    </header>
-    <article>
-      <h1>Recipient</h1>
-      <address>
-        <p>Some Company<br>c/o Some Guy</p>
-      </address>
-      <table class="meta">
-        <tr>
-          <th>Invoice #</th>
-          <td>101138</td>
-        </tr>
-        <tr>
-          <th>Date</th>
-          <td>January 1, 2012</td>
-        </tr>
-        <tr>
-          <th>Amount Due</th>
-          <td><span id="prefix">$600.00</td>
-        </tr>
-      </table>
-      <table class="inventory">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Rate</th>
-            <th>Quantity</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><a class="cut">-</a>Front End Consultation</td>
-            <td>Experience Review</td>
-            <td>$150.00</td>
-            <td>4</td>
-            <td>$600.00</td>
-          </tr>
-        </tbody>
-      </table>
-      <a class="add">+</a>
-      <table class="balance">
-        <tr>
-          <th>Total</th>
-          <td>$600.00</td>
-        </tr>
-        <tr>
-          <th>Amount Paid</th>
-          <td>$0.00</td>
-        </tr>
-        <tr>
-          <th>Balance Due</th>
-          <td>$600.00</td>
-        </tr>
-      </table>
-    </article>
-    <aside>
-      <h1>Additional Notes</h1>
-      <div>
-        <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+  <body class="A4">
+    <!-- Each sheet element should have the class "sheet" -->
+    <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+    <section class="sheet padding-10mm">
+      <div class="columns">
+        <img class="logo" alt="" src="logo_sko.png">
+        <h1>Factuur</h1>
       </div>
-    </aside>
-  </section>
-
-</body>
-
+      <div class="columns">
+        <div class="column">
+          <address>
+            <p>Student Kick-Off</p>
+            <p>Minnemeers Business Center<br>Blekerijstraat 75 Bus 3<br>9000 Gent<br>Belgium</p>
+            <p>Ondernemingsnummer<br>BE0886847343</p>
+          </address>
+        </div>
+        <div class="column">
+          <address>
+            <p>JAN JANSSENS</p>
+            <p>STRAATDINK 1<br>0000 STAD<br>LAND</p>
+          </address>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <table class="table is-bordered">
+            <tbody>
+              <tr>
+                <td>
+                  Factuur voor verkoop en levering van
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  BTW Nummer Klant
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  NL 8140 2748 9B01
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="column">
+          <table class="table is-bordered">
+            <thead>
+              <tr>
+                <th colspan="4">
+                  Gegevens Factuur
+                </th>
+              </tr>
+              <tr>
+                <th>Factuurnummer</th>
+                <th>Klantennummer</th>
+                <th>Factuurdatum</th>
+                <th>Vervaldatum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0000</td>
+                <td>0000</td>
+                <td>0000</td>
+                <td>0000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <table class="table is-bordered">
+            <thead>
+              <tr>
+                <td>Datum</td>
+                <td>Omschrijving</td>
+                <td>Bedrag</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>dink</td>
+                <td>dink</td>
+                <td>dink</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <div class="content">
+            <p>
+              Gelieve binnen 30 kalenderdagen na factuurdatum te betalen op onderstaande rekening met vermelding van factuurnummer.
+            </p>
+            <p>IBAN BE35 7370 1880 7737</p>
+            <p>BIC KREDBEBB</p>
+          </div>
+        </div>
+        <div class="column">
+          <table class="table is-bordered">
+            <tbody>
+              <tr>
+                <td>NETTO</td>
+                <td>DUUSD EURO</td>
+              </tr>
+              <tr>
+                <td>BTW</td>
+                <td>NOG KEER DUUST EURO</td>
+              </tr>
+              <tr>
+                <td>Totaal (inclusief BTW)</td>
+                <td>TWEEDUUST EURO</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="content">
+        <p>Contact</p>
+      </div>
+      <div class="columns">
+        <div class="column">Freya De Schamphelaere</div>
+        <div class="column">Juridisch/Financien</div>
+        <div class="column">freya.deschamphelaer@studentkickoff.be</div>
+        <div class="column">+32 (0)471 48 34 52</div>
+      </div>
+      <div class="content">
+        <p>Alle facturen worden geregeld door onze Algemene Voorwaarden (zie volgende bladzijde).</p>
+      </div>
+    </section>
+    <section class="sheet padding-10mm">
+      <div class="content">
+        <h1>
+          ALGEMENE VOORWAARDEN
+        </h1>
+        <p>
+          De rechtsverhouding tussen Student Kick Off vzw, hierna genoemd SKO met maatschappelijke zetel te Botermarkt 1, 9000 Gent, ingeschreven in de KBO onder het nummer 0886.847.343 en de contractspartij, wordt beheerst door onderhavige algemene voorwaarden, de facturen en de eventuele specifieke voorwaarden, opgenomen in de hoofdovereenkomst tussen partijen (hierna gezamenlijk aangeduid als "de Overeenkomst"). De Overeenkomst vernietigt en vervangt alle schriftelijke of mondelinge contracten, voorstellen en verbintenissen die betrekking hebben op hetzelfde voorwerp en die aan de datum van deze Overeenkomst zouden voorafgaan. De Overeenkomst heeft voorrang op de algemene en/of andere voorwaarden van de klant, zelfs indien deze bepalen dat zij als enige gelden. Afwijkingen ten opzichte van de Overeenkomst zijn slechts mogelijk na voorafgaande en schriftelijke toestemming van SKO. SKO behoudt zich het recht voor om de bepalingen van de Overeenkomst te wijzigen.
+        </p>
+        <ol>
+          <li>
+            Onze algemene voorwaarden zijn van toepassing op alle overeenkomsten die worden afgesloten, behoudens uitdrukkelijk andersluidend beding en met uitsluiting van de algemene voorwaarden van de contractspartij.
+          </li>
+          <li>
+            Alle facturen dienen per overschrijving betaald te worden binnen dertig dagen na de factuurdatum en dit op de meegedeelde rekening en met vermelding van de meegedeelde gegevens op de factuur.
+          </li>
+          <li>
+            Al de prijzen vermeld op de factuur zijn exclusief 21% BTW, tenzij uitdrukkelijk anders vermeld wordt.
+          </li>
+          <li>
+            Bij een laattijdige betaling van de factuur zal een forfaitaire vergoeding van 15,00 EUR worden aangerekend per aanmaning die verstuurd wordt naar de ingebreke zijnde contractspartij.
+          </li>
+          <li>
+            Bovenop deze forfaitaire vergoeding zal bij een laattijdige betaling van de factuur, van rechtswege en zonder voorafgaande ingebrekestelling een interest verschuldigd zijn van 10% op het openstaand saldo van de factuur en dit per begonnen maand, waarbij elke begonnen maand een vervallen maand geacht wordt te zijn.
+          </li>
+          <li>
+            Bij een laattijdige betaling van een factuur worden alle schuldvorderingen die SKO bezit ten aanzien van de ingebreke zijnde contractspartij, onmiddellijk opeisbaar.
+          </li>
+          <li>
+            Wanneer SKO ten gevolge van overmacht niet in de mogelijkheid verkeert de overeenkomst uit te voeren, doordat het festival niet georganiseerd kan worden, zullen de voorschotten niet terugbetaald kunnen worden. In ieder geval is de contractspartij gehouden zijn deel van de overeenkomst uit te voeren pro rata van het aantal dagen dat SKO zijn deel van de overeenkomst heeft uitgevoerd.
+          </li>
+          <li>
+            Indien door de contractspartij materiaal werd geleend aan SKO zal geen enkele vergoeding aangerekend kunnen worden aan SKO voor het verlies van materiaal, indien het geleende materiaal vroeger werd afgehaald dan contractueel overeengekomen.
+          </li>
+          <li>
+            Al onze facturen worden geacht aanvaard te zijn indien zij binnen de 15 dagen na ontvangst niet betwist worden bij aangetekende brief.
+          </li>
+          <li>
+            In geval van betwisting zijn uitsluitend de rechtbanken van het gerechtelijk arrondissement Gent bevoegd.
+          </li>
+        </ol>
+      </div>
+    </section>
+  </body>
 </html>

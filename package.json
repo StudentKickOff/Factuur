@@ -4,6 +4,7 @@
   "description": "genereert facturen",
   "main": "index.js",
   "dependencies": {
+    "bulma": "^0.4.0",
     "paper-css": "^0.3.0"
   },
   "devDependencies": {},
