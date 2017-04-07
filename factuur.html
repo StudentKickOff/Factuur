@@ -6,7 +6,6 @@
   <title>Invoice</title>
   <link rel="stylesheet" href="style.css">
   <link rel="license" href="http://www.opensource.org/licenses/mit-license/">
-  <script src="script.js"></script>
   <!-- Normalize or reset CSS with your favorite library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
 
@@ -27,71 +26,71 @@
   <section class="sheet padding-10mm">
     <header>
       <h1>Invoice</h1>
-      <address contenteditable>
+      <address>
         <p>Jonathan Neal</p>
         <p>101 E. Chapman Ave<br>Orange, CA 92866</p>
         <p>(800) 555-1234</p>
       </address>
-      <span><img alt="" src="logo.png"><input type="file" accept="image/*"></span>
+      <img alt="" src="logo.png"><input type="file" accept="image/*">
     </header>
     <article>
       <h1>Recipient</h1>
-      <address contenteditable>
+      <address>
         <p>Some Company<br>c/o Some Guy</p>
       </address>
       <table class="meta">
         <tr>
-          <th><span contenteditable>Invoice #</span></th>
-          <td><span contenteditable>101138</span></td>
+          <th>Invoice #</th>
+          <td>101138</td>
         </tr>
         <tr>
-          <th><span contenteditable>Date</span></th>
-          <td><span contenteditable>January 1, 2012</span></td>
+          <th>Date</th>
+          <td>January 1, 2012</td>
         </tr>
         <tr>
-          <th><span contenteditable>Amount Due</span></th>
-          <td><span id="prefix" contenteditable>$</span><span>600.00</span></td>
+          <th>Amount Due</th>
+          <td><span id="prefix">$600.00</td>
         </tr>
       </table>
       <table class="inventory">
         <thead>
           <tr>
-            <th><span contenteditable>Item</span></th>
-            <th><span contenteditable>Description</span></th>
-            <th><span contenteditable>Rate</span></th>
-            <th><span contenteditable>Quantity</span></th>
-            <th><span contenteditable>Price</span></th>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Rate</th>
+            <th>Quantity</th>
+            <th>Price</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><a class="cut">-</a><span contenteditable>Front End Consultation</span></td>
-            <td><span contenteditable>Experience Review</span></td>
-            <td><span data-prefix>$</span><span contenteditable>150.00</span></td>
-            <td><span contenteditable>4</span></td>
-            <td><span data-prefix>$</span><span>600.00</span></td>
+            <td><a class="cut">-</a>Front End Consultation</td>
+            <td>Experience Review</td>
+            <td>$150.00</td>
+            <td>4</td>
+            <td>$600.00</td>
           </tr>
         </tbody>
       </table>
       <a class="add">+</a>
       <table class="balance">
         <tr>
-          <th><span contenteditable>Total</span></th>
-          <td><span data-prefix>$</span><span>600.00</span></td>
+          <th>Total</th>
+          <td>$600.00</td>
         </tr>
         <tr>
-          <th><span contenteditable>Amount Paid</span></th>
-          <td><span data-prefix>$</span><span contenteditable>0.00</span></td>
+          <th>Amount Paid</th>
+          <td>$0.00</td>
         </tr>
         <tr>
-          <th><span contenteditable>Balance Due</span></th>
-          <td><span data-prefix>$</span><span>600.00</span></td>
+          <th>Balance Due</th>
+          <td>$600.00</td>
         </tr>
       </table>
     </article>
     <aside>
-      <h1><span contenteditable>Additional Notes</span></h1>
-      <div contenteditable>
+      <h1>Additional Notes</h1>
+      <div>
         <p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
       </div>
     </aside>
