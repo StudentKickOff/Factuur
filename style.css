@@ -1,3 +1,44 @@
-.logo {
-	max-width: 100px;
+
+@font-face {
+  font-family: 'LeagueGothic-Regular';
+  src: url('/fonts/leaguegothic-regular-webfont.woff2') format('woff2'),
+       url('/fonts/leaguegothic-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Univers';
+  src: url('/fonts/universl_5-webfont.woff2') format('woff2'),
+       url('/fonts/universl_5-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Univers';
+  font-size: 9pt;
+  line-height: 110%;
+}
+
+.heading {
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+
+  font-family: 'LeagueGothic-Regular';
+  font-size: 30pt;
+  color: red;
+}
+
+.heading .logo {
+  max-height: 100%;
+}
+
+.infotable td, .infotable th {
+  text-align: center;
+}
+
+h2 {
+  color: red;
 }

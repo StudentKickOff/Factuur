@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Invoice</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="license" href="http://www.opensource.org/licenses/mit-license/">
     <!-- Normalize or reset CSS with your favorite library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
     <!-- Load paper.css for happy printing -->
     <link rel="stylesheet" href="node_modules/paper-css/paper.min.css">
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Set page size here: A5, A4 or A3 -->
     <!-- Set also "landscape" if you need -->
     <style>@page { size: A4 }</style>
@@ -19,28 +19,41 @@
   <body class="A4">
     <!-- Each sheet element should have the class "sheet" -->
     <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
-    <section class="sheet padding-10mm">
-      <div class="columns is-mobile">
-        <h1>Factuur</h1>
+    <section class="sheet padding-20mm">
+      <div class="columns is-mobile heading">
+        <img class="logo" alt="" src="logo_sko.png">
+        Factuur
       </div>
+
+      <hr>
+
       <div class="columns is-mobile">
         <div class="column">
-          <address>
-            <p>Student Kick-Off</p>
-            <p>Minnemeers Business Center<br>Blekerijstraat 75 Bus 3<br>9000 Gent<br>Belgium</p>
-            <p>Ondernemingsnummer<br>BE0886847343</p>
-          </address>
+          <p>Student Kick-Off vzw<br>
+            Minnemeers Business Center<br>
+            Blekerijstraat 75 Bus 3<br>
+            9000 Gent<br>
+            Belgium<br>
+            <br>
+            Ondernemingsnummer:<br>
+            BE 0886.847.343
+          </p>
         </div>
         <div class="column">
-          <address>
-            <p>JAN JANSSENS</p>
-            <p>STRAATDINK 1<br>0000 STAD<br>LAND</p>
-          </address>
+          <p>
+            JAN JANSSENS<br>
+            STRAATDINK 1<br>
+            0000 STAD<br>
+            LAND
+          </p>
         </div>
       </div>
+
+      <hr>
+
       <div class="columns is-mobile">
         <div class="column">
-          <table class="table is-bordered">
+          <table class="table is-bordered infotable">
             <tbody>
               <tr>
                 <td>
@@ -61,7 +74,7 @@
           </table>
         </div>
         <div class="column">
-          <table class="table is-bordered">
+          <table class="table is-bordered infotable">
             <thead>
               <tr>
                 <th colspan="4">
@@ -150,9 +163,9 @@
     </section>
     <section class="sheet padding-10mm">
       <div class="content">
-        <h1>
+        <h2>
           ALGEMENE VOORWAARDEN
-        </h1>
+        </h2>
         <p>
           De rechtsverhouding tussen Student Kick Off vzw, hierna genoemd SKO met maatschappelijke zetel te Botermarkt 1, 9000 Gent, ingeschreven in de KBO onder het nummer 0886.847.343 en de contractspartij, wordt beheerst door onderhavige algemene voorwaarden, de facturen en de eventuele specifieke voorwaarden, opgenomen in de hoofdovereenkomst tussen partijen (hierna gezamenlijk aangeduid als "de Overeenkomst"). De Overeenkomst vernietigt en vervangt alle schriftelijke of mondelinge contracten, voorstellen en verbintenissen die betrekking hebben op hetzelfde voorwerp en die aan de datum van deze Overeenkomst zouden voorafgaan. De Overeenkomst heeft voorrang op de algemene en/of andere voorwaarden van de klant, zelfs indien deze bepalen dat zij als enige gelden. Afwijkingen ten opzichte van de Overeenkomst zijn slechts mogelijk na voorafgaande en schriftelijke toestemming van SKO. SKO behoudt zich het recht voor om de bepalingen van de Overeenkomst te wijzigen.
         </p>
