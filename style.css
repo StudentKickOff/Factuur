@@ -35,8 +35,32 @@
   max-height: 100%;
 }
 
+hr {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.infotable {
+  padding-bottom: 0;
+}
+
 .infotable td, .infotable th {
   text-align: center;
+  padding-bottom: 0.3em;
+  padding-top: 0.3em;
+}
+
+.factuurtable tbody {
+  height: 300px;
+}
+
+.content .unstyled-table td {
+  border-bottom: none !important;
+  padding: 0;
 }
 
 h2 {
