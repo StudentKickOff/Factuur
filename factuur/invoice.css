@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'Univers';
+  src: url('/fonts/universl_5-webfont.woff2');
+}
+
+@font-face {
+  font-family: 'LeagueGothic-Regular';
+  src: url('/fonts/leaguegothic-regular-webfont.woff2');
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "LeagueGothic-Regular";
+  font-variant: small-caps;
+}
+
+.sheet .content {
+  line-height: 1.2;
+  font-size: 9pt;
+}
+
+.sheet .content h2 {
+  color: #e43026;
+}
+
+.sheet h1 {
+  font-size: 4rem;
+}
+
+.sheet .page-header {
+  height: 40mm;
+  align-items: center;
+  text-align: center;
+  color: #e43026;
+}
+
+.sheet .page-header .logo {
+  max-height: 100%;
+}
+
+.sheet hr {
+  margin-top: 0;
+  margin-bottom: 4.23mm;
+}
+
+.sheet .table {
+  margin-bottom: 0;
+}
+
+.sheet .infotable td, .sheet .infotable th {
+  text-align: center;
+  padding-bottom: 1.27mm;
+  padding-top: 1.27mm;
+}
+
+.sheet .factuurtable tbody {
+  height: 80mm;
+}
+
+.sheet .content .unstyled-table td {
+  border-bottom: none !important;
+  padding: 0;
+}
