@@ -13,5 +13,13 @@
  *= require_self
  */
 
+@import 'fonts';
 @import 'variables';
 @import 'bulma';
+
+html,
+body {
+  min-height: 100vh;
+}
+
+@import 'invoice';

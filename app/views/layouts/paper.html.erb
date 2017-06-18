@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Factuur</title>
+
+    <!-- Normalize or reset CSS with your favorite library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css" integrity="sha256-5MiG346KC5bVXrbDQQU0cjus8r2Yxh07eorYOPNUcmw=" crossorigin="anonymous" />
+
+    <style>
+    <%= Rails.application.assets.find_asset('invoice_pdf.css').to_s.html_safe %>
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.3.0/paper.css">
+
+    <style>@page { size: A4 }</style>
+  </head>
+
+  <body class="A4">
+    <%= yield %>
+  </body>
+</html>

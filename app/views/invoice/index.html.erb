@@ -12,8 +12,8 @@
   <div class="container">
     <div class="content">
       <ul>
-        <% 5.times do |i| %>
-        <li><%= link_to  "Factuur #{i}", invoice_path(i) %></li>
+        <% @invoices.each do |i| %>
+        <li><%= link_to  "Factuur #{i.created_at}", invoice_path(i) %></li>
         <% end %>
       </ul>
     </div>
