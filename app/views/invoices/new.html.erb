@@ -1,7 +1,19 @@
-<div class="content">
-<h1>New Invoice</h1>
+<section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Nieuwe Factuur Maken
+      </h1>
+    </div>
+  </div>
+</section>
 
-<%= render 'form', invoice: @invoice %>
+<div class="container">
+  <div class="content">
+  <h1>New Invoice</h1>
 
-<%= link_to 'Back', invoices_path %>
+  <%= render 'form', invoice: @invoice %>
+
+  <%= link_to 'Back', invoices_path, class: 'button' %>
+  </div>
 </div>

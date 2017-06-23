@@ -31,7 +31,6 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
 
-
     # Temporary directory, no need to store all this
     Dir.mktmpdir do |dir|
       # TODO: Put this in a config
@@ -39,7 +38,7 @@ class InvoicesController < ApplicationController
       input_file = "#{dir}/input.html"
       output_file = "#{dir}/output.pdf"
 
-      s = render_to_string 'invoice/invoice_pdf', layout: 'paper'
+      s = render_to_string :invoice_pdf, layout: 'paper'
       File.write(input_file, s)
 
       `#{command} #{input_file} #{output_file}`
@@ -47,12 +46,13 @@ class InvoicesController < ApplicationController
       file_contents = File.binread(output_file)
       @invoice.generated_pdf = BSON::Binary.new(file_contents)
 
-      FileUtils.cp(output_file, Rails.root.join('output.pdf'))
+      # FileUtils.cp(output_file, Rails.root.join('output.pdf'))
     end
 
     respond_to do |format|
       if @invoice.save
-        format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
+        flash[:success] = 'Invoice was successfully created.'
+        format.html { redirect_to @invoice }
         format.json { render :show, status: :created, location: @invoice }
       else
         format.html { render :new }
@@ -66,9 +66,14 @@ class InvoicesController < ApplicationController
   def destroy
     @invoice.destroy
     respond_to do |format|
-      format.html { redirect_to invoices_url, notice: 'Invoice was successfully destroyed.' }
+      flash[:success] = 'Invoice was successfully destroyed.'
+      format.html { redirect_to invoices_url }
       format.json { head :no_content }
     end
+  end
+
+  def preview
+    render :invoice_pdf, layout: 'paper'
   end
 
   private

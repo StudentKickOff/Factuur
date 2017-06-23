@@ -16,12 +16,7 @@
     <%= form.text_field :description, id: :invoice_description %>
   </div>
 
-  <div class="field">
-    <%= form.label :generated_pdf %>
-    <%= form.text_field :generated_pdf, id: :invoice_generated_pdf %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Submit', class: 'button is-success' %>
   </div>
 <% end %>

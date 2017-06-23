@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/', to: redirect('/invoices')
-  get '/invoice/preview', to: 'invoice#generate'
+  get '/invoices/preview', to: 'invoices#preview'
 
   resources :invoices
 
