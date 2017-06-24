@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all
+    @invoices = Invoice.all.order(created_at: :desc)
 
     logger.debug(request.base_url)
   end
@@ -31,24 +31,6 @@ class InvoicesController < ApplicationController
   def create
     @invoice = Invoice.new(invoice_params)
 
-    # Temporary directory, no need to store all this
-    Dir.mktmpdir do |dir|
-      # TODO: Put this in a config
-      command = 'electron-pdf'
-      input_file = "#{dir}/input.html"
-      output_file = "#{dir}/output.pdf"
-
-      s = render_to_string :invoice_pdf, layout: 'paper'
-      File.write(input_file, s)
-
-      `#{command} #{input_file} #{output_file}`
-
-      file_contents = File.binread(output_file)
-      @invoice.generated_pdf = BSON::Binary.new(file_contents)
-
-      # FileUtils.cp(output_file, Rails.root.join('output.pdf'))
-    end
-
     respond_to do |format|
       if @invoice.save
         flash[:success] = 'Invoice was successfully created.'
@@ -73,7 +55,14 @@ class InvoicesController < ApplicationController
   end
 
   def preview
-    render :invoice_pdf, layout: 'paper'
+    render(
+      :invoice_pdf,
+      layout: 'paper',
+      locals: {
+        base_url: request.base_url,
+        netto: 100
+      }
+    )
   end
 
   private

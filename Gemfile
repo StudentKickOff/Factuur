@@ -36,6 +36,9 @@ gem 'bson_ext'
 # Bulma is CSS bae
 gem 'bulma-rails'
 
+# i18n
+gem 'rails-i18n', '~> 5.0.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -45,6 +48,14 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+
+  gem 'rspec'
+
+  gem 'mimemagic'
 end
 
 group :development do

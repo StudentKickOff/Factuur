@@ -1,6 +1,6 @@
 <section class="sheet padding-20mm">
   <div class="columns is-mobile page-header">
-    <img class="logo" src="<%= "#{request.base_url}/logo_sko.png" %>" alt="">
+    <img class="logo" src="<%= "#{base_url}/logo_sko.png" %>" alt="">
     <h1>
       Factuur
     </h1>
@@ -74,8 +74,8 @@
           <tr>
             <td>0000</td>
             <td>0000</td>
-            <td>0000</td>
-            <td>0000</td>
+            <td><%= Date.today %></td>
+            <td><%= Date.today + 30.days %></td>
           </tr>
         </tbody>
       </table>
@@ -127,15 +127,15 @@
         <tbody>
           <tr>
             <td>NETTO</td>
-            <td>LETTERLIJK DUUST EURO</td>
+            <td><%= number_to_currency netto %></td>
           </tr>
           <tr>
             <td>BTW</td>
-            <td>NOG KEER DUUST EURO</td>
+            <td><%= number_to_currency(netto * 0.21) %></td>
           </tr>
           <tr>
-            <td><strong>Totaal (incl. BTW)</strong></td>
-            <td><strong>TWEEDUUST EURO</strong></td>
+            <th>Totaal (incl. BTW)</th>
+            <td><strong><%= number_to_currency(netto * 1.21) %></strong></td>
           </tr>
         </tbody>
       </table>
