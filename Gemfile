@@ -56,6 +56,9 @@ group :development, :test do
   gem 'rspec'
 
   gem 'mimemagic'
+
+  # Time sensitive tests
+  gem 'timecop'
 end
 
 group :development do

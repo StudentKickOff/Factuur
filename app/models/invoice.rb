@@ -44,7 +44,11 @@ class Invoice
     eoy = dt.end_of_year
 
     results = where(:created_at.gte => boy).and(:created_at.lte => eoy)
-    idx = '%02i' % (results.size + 1)
+    idx = if results.empty?
+            '01'
+          else
+            format('%02i', results.last.id.split('-')[1].to_i + 1)
+          end
 
     "#{dt.year}-#{idx}"
   end
