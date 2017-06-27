@@ -19,6 +19,10 @@ Given(/^the user is on the page to create a new invoice$/) do
   visit '/invoices/new'
 end
 
+When(/^the user fills in the invoice information$/) do
+  fill_in 'Description', with: 'What a generic description!'
+end
+
 When(/^the user clicks on the submit button$/) do
   click_on 'Submit'
 end

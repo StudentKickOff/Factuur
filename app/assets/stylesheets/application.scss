@@ -22,4 +22,8 @@ body {
   min-height: 100vh;
 }
 
+td {
+  vertical-align: middle !important;
+}
+
 @import 'invoice';

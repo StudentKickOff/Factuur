@@ -1,0 +1,18 @@
+class Contact
+  include Mongoid::Document
+
+  embeds_one :address
+
+  field :name, type: String
+end
+
+class Address
+  include Mongoid::Document
+
+  field :street, type: String
+  field :zip_code, type: String
+  field :city, type: String
+  field :country, type: String
+
+  embedded_in :contact
+end

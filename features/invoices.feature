@@ -12,7 +12,8 @@ Feature: Working with invoices
 
   Scenario: Creating an invoice
     Given the user is on the page to create a new invoice
-    When the user clicks on the submit button
+    When the user fills in the invoice information
+    And the user clicks on the submit button
     Then an invoice is created
     And the user should see the new invoice
 
