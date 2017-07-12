@@ -7,8 +7,8 @@ class Invoice
   validate :force_immutable
   before_create :generate_and_set_pdf
 
-  field :description, type: String
   field :_id, type: String, default: -> { Invoice.next_id }
+  field :contact, type: BSON::ObjectId
   field :generated_pdf, type: BSON::Binary
 
   def self.generate(params = {})
