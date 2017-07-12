@@ -39,6 +39,12 @@ gem 'bulma-rails'
 # i18n
 gem 'rails-i18n', '~> 5.0.0'
 
+# JQuery
+gem "jquery-rails"
+
+# fancy selection
+gem "select2-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -16,7 +16,16 @@
     <%= form.text_field :description, id: :invoice_description %>
   </div>
 
+  <select id="e1">
+      <option value="AL">Alabama</option>
+      <option value="WY">Wyoming</option>
+  </select>
+
   <div class="actions">
     <%= form.submit 'Submit', class: 'button is-success' %>
   </div>
 <% end %>
+
+<script>
+    $(document).ready(function() { $("#e1").select2(); });
+</script>
