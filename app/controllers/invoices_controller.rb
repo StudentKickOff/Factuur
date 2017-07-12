@@ -60,7 +60,8 @@ class InvoicesController < ApplicationController
       layout: 'paper',
       locals: {
         base_url: request.base_url,
-        netto: 100
+        invoice: Invoice.first,
+        contact: Contact.first
       }
     )
   end
@@ -74,6 +75,6 @@ class InvoicesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def invoice_params
-    params.require(:invoice).permit(:description, :generated_pdf)
+    params.require(:invoice).permit(:contact, :generated_pdf, :netto)
   end
 end

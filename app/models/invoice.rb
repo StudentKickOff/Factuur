@@ -2,16 +2,21 @@ class Invoice
   include Mongoid::Document
   # created_at, updated_at
   include Mongoid::Timestamps
+  # Dynamic attributes, e.g. invoice[:netto]
+  include Mongoid::Attributes::Dynamic
 
   # Invoices should be immutable and never changed.
   validate :force_immutable
   before_create :generate_and_set_pdf
 
   field :_id, type: String, default: -> { Invoice.next_id }
-  field :contact, type: BSON::ObjectId
   field :generated_pdf, type: BSON::Binary
 
-  def self.generate(params = {})
+  belongs_to :contact
+
+  validates_presence_of :contact
+
+  def generate_pdf
     res = nil
     Dir.mktmpdir do |dir|
       # TODO: Put this in a config
@@ -26,7 +31,7 @@ class Invoice
         locals: {
           # TODO: make this ready for production
           base_url: 'http://localhost:3000',
-          **params
+          invoice: self
         }
       )
       File.write(input_file, s)
@@ -57,7 +62,7 @@ class Invoice
   private
 
   def generate_and_set_pdf
-    self.generated_pdf = BSON::Binary.new(Invoice.generate(netto: 500))
+    self.generated_pdf = BSON::Binary.new(generate_pdf)
   end
 
   def force_immutable

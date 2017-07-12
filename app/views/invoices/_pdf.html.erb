@@ -21,12 +21,11 @@
       </p>
     </div>
     <div class="column">
-
       <p>
-        JAN JANSSENS<br>
-        STRAATDINK 1<br>
-        0000 STAD<br>
-        LAND
+        <%= invoice.contact.name.upcase %><br>
+        <%= invoice.contact.address.street.upcase %><br>
+        <%= invoice.contact.address.zip_code %> <%= invoice.contact.address.city.upcase %><br>
+        <%= invoice.contact.address.country.upcase %>
       </p>
     </div>
   </div>
@@ -127,15 +126,15 @@
         <tbody>
           <tr>
             <td>NETTO</td>
-            <td><%= number_to_currency netto %></td>
+            <td><%= number_to_currency invoice[:netto].to_i %></td>
           </tr>
           <tr>
             <td>BTW</td>
-            <td><%= number_to_currency(netto * 0.21) %></td>
+            <td><%= number_to_currency(invoice[:netto].to_i * 0.21) %></td>
           </tr>
           <tr>
             <th>Totaal (incl. BTW)</th>
-            <td><strong><%= number_to_currency(netto * 1.21) %></strong></td>
+            <td><strong><%= number_to_currency(invoice[:netto].to_i * 1.21) %></strong></td>
           </tr>
         </tbody>
       </table>

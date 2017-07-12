@@ -14,6 +14,7 @@ development:
         # Change the default write concern. (default = { w: 1 })
         # write:
         #   w: 1
+        allow_dynamic_fields: true
 
         # Change the default read preference. Valid options for mode are: :secondary,
         # :secondary_preferred, :primary, :primary_preferred, :nearest

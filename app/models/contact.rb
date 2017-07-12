@@ -3,6 +3,8 @@ class Contact
 
   embeds_one :address
 
+  has_many :invoices
+
   field :name, type: String
 end
 

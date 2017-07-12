@@ -12,14 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :invoice_description %>
+    <%= form.label :contact, class: 'label' %>
+
+    <p class='control'>
+      <%= form.collection_select(:contact, Contact.all, :id, :name, {}, id: 'e1', class: 'input') %>
+    </p>
   </div>
 
-  <select id="e1">
-      <option value="AL">Alabama</option>
-      <option value="WY">Wyoming</option>
-  </select>
+  <div class="field">
+    <%= form.label :netto, class: 'label' %>
+
+    <p class='control'>
+      <%= form.number_field :netto, class: 'input' %>
+    </p>
+  </div>
 
   <div class="actions">
     <%= form.submit 'Submit', class: 'button is-success' %>
