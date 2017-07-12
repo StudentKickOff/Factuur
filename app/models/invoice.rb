@@ -15,7 +15,8 @@ class Invoice
     res = nil
     Dir.mktmpdir do |dir|
       # TODO: Put this in a config
-      command = 'electron-pdf'
+      # command = 'electron-pdf'
+      command = 'node_modules/electron-pdf/cli.js'
       input_file = "#{dir}/input.html"
       output_file = "#{dir}/output.pdf"
 
