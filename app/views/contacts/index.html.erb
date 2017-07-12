@@ -24,13 +24,13 @@
         <td>
           <div class="field is-grouped">
             <p class="control">
-              <%= link_to 'Show', contact, class: 'button is-primary' %>
+              <%= link_to 'Bekijk', contact, class: 'button is-primary' %>
             </p>
             <p class="control">
-              <%= link_to 'Edit', edit_contact_path(contact), class: 'button is-warning' %>
+              <%= link_to 'Details', edit_contact_path(contact), class: 'button is-warning' %>
             </p>
             <p class="control">
-              <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+              <%= link_to 'Verwijder', contact, method: :delete, data: { confirm: 'Ben je zeker?' }, class: 'button is-danger' %>
             </p>
           </div>
         </td>
@@ -41,6 +41,6 @@
 
   <br>
 
-  <%= link_to 'New Contact', new_contact_path %>
+  <%= link_to 'New Contact', new_contact_path, class: 'button is-primary' %>
 
 </div>
