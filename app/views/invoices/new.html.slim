@@ -1,0 +1,6 @@
+.content
+  h1
+    | Nieuwe Factuur
+  = render 'form', invoice: @invoice
+  = link_to 'Back', invoices_path, class: 'button'
+  iframe[src="/invoices/preview" width="100%" height="100%"]
