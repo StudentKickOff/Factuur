@@ -1,24 +1,35 @@
-# README
+# Factuur
+Onze huisgemaakte factuurgeneratie-applicatie.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Hoe start ik?
 
-Things you may want to cover:
+1. Installeer:
+    - Roebie 2.4.0
+    - Bundler
+    - Node (met `npm`)
+    - MongoDB
+2. `bundle install`
+3. `npm install`
+4. `sudo systemctl start mongodb`
+5. `rake db:setup`
+6. `rails server` (start de server)
+7. ???
+8. PROFIT
 
-* Ruby version
 
-* System dependencies
+## Databank
+MongoDB, want deze app moet webscale zijn enzo.
 
-* Configuration
+## Configuratie
+Op dit moment nog niets.
 
-* Database creation
+## Deployment
+Lol, draai development in production yo.
 
-* Database initialization
+## Testen
+Hah.
 
-* How to run the test suite
+Blijkbaar is Lorin fan van komkommers.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
