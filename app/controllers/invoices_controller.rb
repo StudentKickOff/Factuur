@@ -33,7 +33,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       if @invoice.save
-        flash[:success] = 'Invoice was successfully created.'
+        flash[:success] = 'Factuur werd aangemaakt.'
         format.html { redirect_to @invoice }
         format.json { render :show, status: :created, location: @invoice }
       else
@@ -48,7 +48,7 @@ class InvoicesController < ApplicationController
   def destroy
     @invoice.destroy
     respond_to do |format|
-      flash[:success] = 'Invoice was successfully destroyed.'
+      flash[:success] = 'Factuur werd verwijderd.'
       format.html { redirect_to invoices_url }
       format.json { head :no_content }
     end
