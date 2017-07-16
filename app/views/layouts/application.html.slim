@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Factuur
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    section.hero.is-danger.is-bold
+      .hero-foot
+        nav.tabs.is-boxed
+          .container
+            ul
+              li class=('is-active' if current_page?(invoices_path))
+                = link_to 'Facturen', invoices_path
+              li class=('is-active' if current_page?(contacts_path))
+                = link_to 'Contactenlijst', contacts_path
+    section.section
+      .container
+        - flash.each do |key, value|
+          div class=("notification is-#{key}")
+            = value
+        == yield

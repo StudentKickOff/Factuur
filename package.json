@@ -1,24 +1,7 @@
 {
-  "name": "factuur",
-  "version": "1.0.0",
-  "description": "genereert facturen",
-  "main": "index.js",
+  "name": "Factuur",
+  "private": true,
   "dependencies": {
-    "bulma": "^0.4.0",
-    "paper-css": "^0.3.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/StudentKickOff/Factuur.git"
-  },
-  "author": "sko2017",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/StudentKickOff/Factuur/issues"
-  },
-  "homepage": "https://github.com/StudentKickOff/Factuur#readme"
+    "electron-pdf": "^1.3.0"
+  }
 }
