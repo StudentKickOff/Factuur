@@ -6,6 +6,10 @@ class Contact
   has_many :invoices
 
   field :name, type: String
+
+  def to_s
+    name
+  end
 end
 
 class Address
