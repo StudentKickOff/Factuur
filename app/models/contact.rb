@@ -1,5 +1,7 @@
 class Contact
   include Mongoid::Document
+  # Soft delete
+  include Mongoid::Paranoia
 
   embeds_one :address
 
@@ -18,6 +20,8 @@ end
 
 class Address
   include Mongoid::Document
+  # Soft delete
+  include Mongoid::Paranoia
 
   field :beneficiary, type: String
   field :street, type: String

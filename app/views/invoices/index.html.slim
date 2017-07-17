@@ -1,5 +1,5 @@
 .content
-  h1 Facturen
+  h1 Facturen #{'(gearchiveerd)' if @archived}
   table
     thead
       tr
@@ -10,19 +10,25 @@
     tbody
       - @invoices.each do |invoice|
         tr
-          td
-            = invoice.id
-          td
-            = invoice.contact
-          td
-            = invoice.created_at
+          td = invoice.id
+          td = invoice.contact
+          td = invoice.created_at
           td
             .field.is-grouped
-              p.control
-                = link_to 'Bekijk', invoice_path(id: invoice.id, format: :pdf), target: :_blank, class: 'button is-primary'
-              p.control
-                = link_to 'Details', invoice, class: 'button is-warning'
-              p.control
-                = link_to 'Verwijder', invoice, method: :delete, data: { confirm: 'Ben je zeker dat je deze factuur wilt verwijderen?' }, class: 'button is-danger'
+              - if invoice.deleted_at
+                p.control = link_to 'Details', invoice, class: 'button is-primary'
+                p.control = button_to 'Herstellen', {action: 'unarchive', id: invoice}, class: 'button is-warning'
+              - else
+                p.control = link_to 'Download', invoice_path(id: invoice.id, format: :pdf), target: :_blank, class: 'button is-primary'
+                p.control = link_to 'Details', invoice, class: 'button is-warning'
+                p.control = link_to 'Archiveer', invoice, method: :delete, data: { confirm: 'Ben je zeker dat je deze factuur wilt archiveren?' }, class: 'button is-danger'
   br
-  = link_to 'Nieuwe factuur', new_invoice_path, class: 'button is-primary'
+  .field.is-grouped
+    - if @archived
+      .control
+        = link_to 'Terug', invoices_url, class: 'button is-link'
+    - else
+      .control
+        = link_to 'Nieuwe factuur', new_invoice_path, class: 'button is-primary'
+      .control
+        = link_to 'Gearchiveerde facturen', invoices_url(archived: true), class: 'button is-link'

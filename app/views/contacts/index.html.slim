@@ -1,5 +1,5 @@
 .content
-  h1 Bestendigen
+  h1 Bestendigen #{'(gearchiveerd)' if @archived}
   table
     thead
       tr
@@ -25,10 +25,22 @@
           td = contact.address.country
           td
             .field.is-grouped
-              p.control
-                = link_to 'Details', edit_contact_path(contact), class: 'button is-primary'
-              p.control
-                = link_to 'Verwijder', contact, method: :delete, data: { confirm: 'Ben je zeker?' }, class: 'button is-danger'
+              - if contact.deleted_at
+                p.control
+                  = button_to 'Herstellen', {action: 'unarchive', id: contact}, class: 'button is-warning'
+              - else
+                p.control
+                  = link_to 'Details', edit_contact_path(contact), class: 'button is-primary'
+                p.control
+                  = link_to 'Archiveer', contact, method: :delete, data: { confirm: 'Ben je zeker?' }, class: 'button is-danger'
   br
-    = link_to 'Nieuw Contact', new_contact_path, class: 'button is-primary'
+  .field.is-grouped
+    - if @archived
+      .control
+        = link_to 'Terug', contacts_url, class: 'button is-link'
+    - else
+      .control
+        = link_to 'Nieuw Contact', new_contact_path, class: 'button is-primary'
+      .control
+        = link_to 'Gearchiveerde contacten', contacts_url(archived: true), class: 'button is-link'
 

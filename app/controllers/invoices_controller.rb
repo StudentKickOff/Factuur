@@ -1,12 +1,15 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:show, :edit, :destroy]
+  before_action :set_invoice, only: [:show, :edit, :destroy, :unarchive]
 
   # GET /invoices
   # GET /invoices.json
   def index
-    @invoices = Invoice.all.order(created_at: :desc)
-
-    logger.debug(request.base_url)
+    @archived = params[:archived].present?
+    if @archived
+      @invoices = Invoice.deleted.order(created_at: :desc)
+    else
+      @invoices = Invoice.all.order(created_at: :desc)
+    end
   end
 
   # GET /invoices/1
@@ -54,6 +57,12 @@ class InvoicesController < ApplicationController
     end
   end
 
+  # POST /invoices/1/unarchive
+  def unarchive
+    @invoice.restore
+    redirect_back(fallback_location: invoices_url, notice: 'Factuur werd hersteld.')
+  end
+
   def preview
     render(
       :invoice_pdf,
@@ -70,7 +79,7 @@ class InvoicesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_invoice
-    @invoice = Invoice.find(params[:id])
+    @invoice = Invoice.unscoped.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

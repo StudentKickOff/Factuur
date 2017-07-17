@@ -33,6 +33,9 @@ gem 'mongoid'
 # Speed up BSON serialization
 gem 'bson_ext'
 
+# Soft delete
+gem 'mongoid_paranoia'
+
 # Bulma is CSS bae
 gem 'bulma-rails'
 

@@ -4,6 +4,8 @@ class Invoice
   include Mongoid::Timestamps
   # Dynamic attributes, e.g. invoice[:netto]
   include Mongoid::Attributes::Dynamic
+  # Soft delete
+  include Mongoid::Paranoia
 
   # Invoices should be immutable and never changed.
   validate :force_immutable

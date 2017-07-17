@@ -4,7 +4,12 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @archived = params[:archived].present?
+    if @archived
+      @contacts = Contact.deleted
+    else
+      @contacts = Contact.all
+    end
   end
 
   # GET /contacts/1
@@ -54,9 +59,16 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact werd verwijderd.' }
+      format.html { redirect_to contacts_url, notice: 'Contact werd gearchiveerd.' }
       format.json { head :no_content }
     end
+  end
+
+  # POST /contacts/1/unarchive
+  def unarchive
+    @contact = Contact.unscoped.find(params[:id])
+    @contact.restore
+    redirect_back(fallback_location: contacts_url, notice: 'Contact werd hersteld.')
   end
 
   private
