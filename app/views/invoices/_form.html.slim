@@ -1,9 +1,8 @@
 = form_with(model: invoice, local: true) do |form|
   - if invoice.errors.any?
     #error_explanation
-      h2
-        = pluralize(invoice.errors.count, "error")
-        |  prohibited this invoice from being saved:
+      h2 De volgende #{pluralize(invoice.errors.count, 'fout', 'fouten')}
+         zorgden ervoor dat de factuur niet kon worden aangemaakt.
       ul
         - invoice.errors.full_messages.each do |message|
           li
@@ -17,6 +16,6 @@
     p.control
       = form.number_field :netto, class: 'input'
   .actions
-    = form.submit 'Submit', class: 'button is-success'
+    = form.submit 'Aanmaken', class: 'button is-success'
 script
   |  $(document).ready(function() { $("#e1").select2(); }); 

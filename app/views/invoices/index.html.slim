@@ -1,17 +1,12 @@
 .content
-  h1
-    | Invoices
+  h1 Facturen
   table
     thead
       tr
-        th
-          | Factuurnummer
-        th
-          | tav
-        th
-          | Aanmaakdatum
-        th
-          | Acties
+        th Factuurnummer
+        th tav
+        th Aanmaakdatum
+        th Acties
     tbody
       - @invoices.each do |invoice|
         tr

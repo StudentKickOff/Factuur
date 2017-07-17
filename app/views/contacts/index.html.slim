@@ -1,21 +1,14 @@
 .content
-  h1
-    | Bestendigen
+  h1 Bestendigen
   table
     thead
       tr
-        th
-          | Naam
-        th
-          | Straat
-        th
-          | Stad
-        th
-          | Postcode
-        th
-          | Land
-        th
-          | Acties
+        th Naam
+        th Straat
+        th Stad
+        th Postcode
+        th Land
+        th Acties
     tbody
       - @contacts.each do |contact|
         tr
@@ -38,4 +31,4 @@
               p.control
                 = link_to 'Verwijder', contact, method: :delete, data: { confirm: 'Ben je zeker?' }, class: 'button is-danger'
   br
-  = link_to 'New Contact', new_contact_path, class: 'button is-primary'
+  = link_to 'Nieuw Contact', new_contact_path, class: 'button is-primary'
