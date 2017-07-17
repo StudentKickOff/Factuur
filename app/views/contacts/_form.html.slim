@@ -1,12 +1,13 @@
 = form_with(model: contact, local: true) do |form|
   - if contact.errors.any?
-    #error_explanation
-      h2 De volgende #{pluralize(contact.errors.count, 'fout', 'fouten')}
-         zorgden ervoor dat dit contact niet kon worden aangemaakt.
-      ul
-        - contact.errors.full_messages.each do |message|
-          li
-            = message
+    .notification.is-danger#error_explanation
+      p De volgende #{pluralize(contact.errors.count, 'fout', 'fouten')}
+         zorgden ervoor dat dit contact niet kon worden aangemaakt:
+      .content
+        ul
+          - contact.errors.full_messages.each do |message|
+            li
+              = message
   .field
     = form.label 'Naam', class: 'label'
     p.control

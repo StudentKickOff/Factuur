@@ -1,0 +1,13 @@
+nl:
+  mongoid:
+    attributes:
+      contact:
+        name: "Naam"
+        vatnumber: "Btw-nummer"
+        address: "Adres"
+      address:
+        beneficiary: "Begunstigde"
+        street: "Straat"
+        zip_code: "Postcode"
+        city: "Stad"
+        country: "Land"

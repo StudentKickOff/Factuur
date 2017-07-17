@@ -1,12 +1,13 @@
 = form_with(model: invoice, local: true) do |form|
-  - if invoice.errors.any?
-    #error_explanation
-      h2 De volgende #{pluralize(invoice.errors.count, 'fout', 'fouten')}
-         zorgden ervoor dat de factuur niet kon worden aangemaakt.
-      ul
-        - invoice.errors.full_messages.each do |message|
-          li
-            = message
+  - unless invoice.errors.any?
+    .notification.is-danger#error_explanation
+      p De volgende #{pluralize(invoice.errors.count, 'fout', 'fouten')}
+        zorgden ervoor dat de factuur niet kon worden aangemaakt:
+      .content
+        ul
+          - invoice.errors.full_messages.each do |message|
+            li
+              = message
   .field
     = form.label :contact, class: 'label'
     p.control
