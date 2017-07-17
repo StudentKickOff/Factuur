@@ -36,6 +36,9 @@ gem 'bson_ext'
 # Bulma is CSS bae
 gem 'bulma-rails'
 
+# Slim templating <3
+gem 'slim-rails'
+
 # i18n
 gem 'rails-i18n', '~> 5.0.0'
 

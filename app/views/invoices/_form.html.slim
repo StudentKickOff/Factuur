@@ -1,0 +1,21 @@
+= form_with(model: invoice, local: true) do |form|
+  - if invoice.errors.any?
+    #error_explanation
+      h2 De volgende #{pluralize(invoice.errors.count, 'fout', 'fouten')}
+         zorgden ervoor dat de factuur niet kon worden aangemaakt.
+      ul
+        - invoice.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :contact, class: 'label'
+    p.control
+      = form.collection_select(:contact, Contact.all, :id, :name, {}, id: 'e1', class: 'input')
+  .field
+    = form.label :netto, class: 'label'
+    p.control
+      = form.number_field :netto, class: 'input'
+  .actions
+    = form.submit 'Aanmaken', class: 'button is-success'
+script
+  |  $(document).ready(function() { $("#e1").select2(); }); 
