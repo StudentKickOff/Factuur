@@ -3,7 +3,10 @@
   table
     thead
       tr
+        th Klantnummer
         th Naam
+        th Btw-nummer
+        th Begunstigde
         th Straat
         th Stad
         th Postcode
@@ -12,16 +15,14 @@
     tbody
       - @contacts.each do |contact|
         tr
-          td
-            = contact.name
-          td
-            = contact.address.street
-          td
-            = contact.address.city
-          td
-            = contact.address.zip_code
-          td
-            = contact.address.country
+          td = contact.id
+          td = contact.name
+          td = contact.vatnumber
+          td = contact.address.beneficiary
+          td = contact.address.street
+          td = contact.address.city
+          td = contact.address.zip_code
+          td = contact.address.country
           td
             .field.is-grouped
               p.control
@@ -31,4 +32,5 @@
               p.control
                 = link_to 'Verwijder', contact, method: :delete, data: { confirm: 'Ben je zeker?' }, class: 'button is-danger'
   br
-  = link_to 'Nieuw Contact', new_contact_path, class: 'button is-primary'
+    = link_to 'Nieuw Contact', new_contact_path, class: 'button is-primary'
+
