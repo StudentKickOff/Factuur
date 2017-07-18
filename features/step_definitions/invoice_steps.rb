@@ -1,9 +1,26 @@
+# frozen_string_literal: true
+
 Given(/^an invoice with id "([^"]*)"$/) do |id|
-  @invoice = Invoice.create(id: id)
+  @invoice = Invoice.create(id: id, contact: @contact)
+end
+
+Given(/^a contact named "([^"]*)"$/) do |name|
+  data = {
+    name: name,
+    vatnumber: 'BE1382041234',
+    address: {
+      beneficiary: 'Foo',
+      street: 'Bar',
+      zip_code: 'Bar',
+      city: 'Bar',
+      country: 'Bar'
+    }
+  }
+  @contact = Contact.create(data)
 end
 
 When(/^we try to edit the invoice$/) do
-  @invoice.description = 'Testing'
+  @invoice.contact = nil
 end
 
 Then(/^saving should not succeed$/) do
@@ -20,7 +37,7 @@ Given(/^the user is on the page to create a new invoice$/) do
 end
 
 When(/^the user fills in the invoice information$/) do
-  fill_in 'Description', with: 'What a generic description!'
+  fill_in 'Netto', with: 30
 end
 
 When(/^the user clicks on the submit button$/) do

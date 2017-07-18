@@ -36,6 +36,9 @@ gem 'bson_ext'
 # Soft delete
 gem 'mongoid_paranoia'
 
+# Mongoid enums
+gem 'mongoid-enum', git: 'https://github.com/monster-media/mongoid-enum'
+
 # Bulma is CSS bae
 gem 'bulma-rails'
 
@@ -50,6 +53,9 @@ gem "jquery-rails"
 
 # fancy selection
 gem "select2-rails"
+
+# Dynamic forms
+gem 'cocoon'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -71,6 +77,9 @@ group :development, :test do
 
   # Time sensitive tests
   gem 'timecop'
+
+  # Fake stuff
+  gem 'faker'
 end
 
 group :development do

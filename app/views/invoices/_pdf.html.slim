@@ -4,7 +4,8 @@ ruby:
 section.sheet.padding-20mm
   .columns.is-mobile.page-header
     img.logo src="#{base_url}/logo_sko.png" alt=""
-    h1 Factuur
+    h1
+      = note_type invoice.note_type
   hr
   .columns.is-mobile.content
     .column
@@ -25,16 +26,16 @@ section.sheet.padding-20mm
         | BE 0886.847.343
     .column
       p
-        = contact.name
+        = contact.name.upcase
         - if address.beneficiary
           br
-          = address.beneficiary
+          = address.beneficiary.upcase
         br
-        = address.street
+        = address.street.upcase
         br
-        | #{address.zip_code} #{address.city}
+        | #{address.zip_code.upcase} #{address.city.upcase}
         br
-        = address.country
+        = address.country.upcase
   hr
   .columns.is-mobile.content
     .column
@@ -58,7 +59,8 @@ section.sheet.padding-20mm
             th Vervaldatum
         tbody
           tr
-            td 0000
+            td
+              = invoice.id
             td 0000
             td
               = Date.today
@@ -73,11 +75,15 @@ section.sheet.padding-20mm
             th Omschrijving
             th Bedrag
         tbody
-          - 10.times do
+          - invoice.costs.each do |cost|
             tr
-              td dink
-              td dink
-              td dink
+              td
+                / 'l' is the rails localization helper
+                = l cost.date
+              td
+                = cost.description
+              td
+                = number_to_currency cost.amount
   .columns.is-mobile.content
     .column
       p Gelieve binnen 30 kalenderdagen na factuurdatum te betalen op onderstaande rekening met vermelding van factuurnummer.
@@ -95,16 +101,16 @@ section.sheet.padding-20mm
           tr
             td NETTO
             td
-              = number_to_currency invoice[:netto].to_i
+              = number_to_currency invoice.net_total
           tr
-            td BTW
+            td BTW (#{number_to_percentage invoice.vat_amount, precision: 0})
             td
-              = number_to_currency(invoice[:netto].to_i * 0.21)
+              = number_to_currency(invoice.net_total * invoice.vat_amount/100)
           tr
             th Totaal (incl. BTW)
             td
               strong
-                = number_to_currency(invoice[:netto].to_i * 1.21)
+                = number_to_currency(invoice.net_total * (1 + invoice.vat_amount/100))
   .content
     p
       strong Contact

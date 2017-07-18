@@ -1,5 +1,5 @@
-= form_with(model: invoice, local: true) do |form|
-  - unless invoice.errors.any?
+= form_with(model: invoice, local: true) do |f|
+  - if invoice.errors.any?
     .notification.is-danger#error_explanation
       p De volgende #{pluralize(invoice.errors.count, 'fout', 'fouten')}
         zorgden ervoor dat de factuur niet kon worden aangemaakt:
@@ -9,14 +9,22 @@
             li
               = message
   .field
-    = form.label :contact, class: 'label'
+    = f.label :contact, class: 'label'
     p.control
-      = form.collection_select(:contact, Contact.all, :id, :name, {}, id: 'e1', class: 'input')
+      = f.collection_select(:contact, Contact.all, :id, :name, {}, id: 'e1', class: 'input')
+
   .field
-    = form.label :netto, class: 'label'
+    = f.label :note_type, class: 'label'
     p.control
-      = form.number_field :netto, class: 'input'
+      = f.select(:note_type, Invoice::NOTE_TYPE, class: 'input')
+      
+  = f.fields_for :costs do |cost|
+    = render 'cost_fields', f: cost
+
+  .links
+    = link_to_add_association 'Kost toevoegen', f, :costs
+
   .actions
-    = form.submit 'Aanmaken', class: 'button is-success'
+    = f.submit 'Aanmaken', class: 'button is-success'
 script
-  |  $(document).ready(function() { $("#e1").select2(); }); 
+  |  $(document).ready(function() { $("#e1").select2(); });

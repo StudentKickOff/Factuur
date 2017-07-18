@@ -1,7 +1,8 @@
 Feature: Working with invoices
 
   Background:
-    Given an invoice with id "2017-06"
+    Given a contact named "Jantje"
+    And an invoice with id "2017-06"
 
   Scenario: Invoices are immutable
     When we try to edit the invoice

@@ -6,6 +6,10 @@ class Invoice
   include Mongoid::Attributes::Dynamic
   # Soft delete
   include Mongoid::Paranoia
+  # Factuurtypes
+  include Mongoid::Enum
+
+  enum :note_type, [:regular, :credit_note, :income_note]
 
   # Invoices should be immutable and never changed.
   validate :force_immutable
@@ -13,10 +17,18 @@ class Invoice
 
   field :_id, type: String, default: -> { Invoice.next_id }
   field :generated_pdf, type: BSON::Binary
+  field :vat_amount, type: Float, default: 21.0
+
+  embeds_many :costs
+  accepts_nested_attributes_for :costs
 
   belongs_to :contact
 
   validates_presence_of :contact
+
+  def net_total
+    costs.map(&:amount).sum
+  end
 
   def generate_pdf
     res = nil
@@ -51,7 +63,7 @@ class Invoice
     boy = dt.beginning_of_year
     eoy = dt.end_of_year
 
-    results = where(:created_at.gte => boy).and(:created_at.lte => eoy)
+    results = unscoped.where(:created_at.gte => boy).and(:created_at.lte => eoy)
     idx = if results.empty?
             '01'
           else
@@ -73,4 +85,12 @@ class Invoice
     errors.add(:base, :immutable)
     reload
   end
+end
+
+class Cost
+  include Mongoid::Document
+
+  field :description, type: String
+  field :date, type: Date
+  field :amount, type: Integer
 end
