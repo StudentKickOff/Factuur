@@ -103,12 +103,12 @@ section.sheet.padding-20mm
           tr
             td BTW (#{number_to_percentage note.vat_percentage, precision: 0})
             td
-              = number_to_currency(note.net_total * note.vat_percentage/100)
+              = number_to_currency note.vat_total
           tr
             th Totaal (incl. BTW)
             td
               strong
-                = number_to_currency(note.net_total * (1 + note.vat_percentage/100))
+                = number_to_currency note.total
   .content
     p
       strong Contact

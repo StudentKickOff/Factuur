@@ -28,6 +28,14 @@ class Note
     costs.map(&:amount).sum
   end
 
+  def vat_total
+    net_total * vat_percentage/100
+  end
+
+  def total
+    net_total + vat_total
+  end
+
   def generate_pdf
     res = nil
     Dir.mktmpdir do |dir|
