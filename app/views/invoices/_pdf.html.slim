@@ -59,13 +59,10 @@ section.sheet.padding-20mm
             th Vervaldatum
         tbody
           tr
-            td
-              = invoice.id
-            td 0000
-            td
-              = Date.today
-            td
-              = Date.today + 30.days
+            td = invoice.id
+            td = contact.id
+            td = Date.today
+            td = Date.today + 30.days
   .columns.is-mobile.content
     .column
       table.table.is-bordered.factuurtable
