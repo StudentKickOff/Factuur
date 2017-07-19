@@ -10,13 +10,19 @@
               = message
   .field
     = f.label :contact, class: 'label'
-    p.control
+    .control
       = f.collection_select(:contact, Contact.all, :id, :name, {}, id: 'e1', class: 'input')
 
   .field
     = f.label :kind, class: 'label'
-    p.control
-      = f.select(:kind, Note::KIND, class: 'input')
+    .control
+      .select
+        = f.select(:kind, options_for_select(Note.kind_i18n_select_options), class: 'input')
+
+  .field
+    = f.label :vat_percentage, class: 'label'
+    .control
+      = f.number_field :vat_percentage, in: 0..100, class: 'input'
 
   = f.fields_for :costs do |cost|
     = render 'cost_fields', f: cost

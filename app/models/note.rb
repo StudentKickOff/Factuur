@@ -7,7 +7,7 @@ class Note
   # Factuurtypes
   include Mongoid::Enum
 
-  enum :kind, [:note, :credit, :income]
+  enum :kind, [:invoice, :credit, :income]
 
   # Notes should be immutable and never changed.
   validate :force_immutable
@@ -69,6 +69,13 @@ class Note
           end
 
     "#{dt.year}-#{idx}"
+  end
+
+  # Because mongoid-enums doesn't to I18N
+  def self.kind_i18n_select_options
+    Note::KIND.map do |k, _|
+      [I18n.t("mongoid.enums.#{model_name.i18n_key}.kind.#{k}"), k]
+    end
   end
 
   private
