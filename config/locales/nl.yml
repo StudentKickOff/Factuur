@@ -18,9 +18,13 @@ nl:
       note:
         kind: "Factuurtype"
         vat_percentage: "BTW"
+        costs: "Kosten"
     enums:
       note:
         kind:
           invoice: "Factuur"
           credit: "Kredietnota"
           income: "Inkomstennota"
+  date:
+    formats:
+      default: "%d-%m-%Y"

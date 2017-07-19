@@ -57,6 +57,9 @@ gem "select2-rails"
 # Dynamic forms
 gem 'cocoon'
 
+# Font Awesom
+gem 'font-awesome-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
