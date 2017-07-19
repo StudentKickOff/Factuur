@@ -5,7 +5,7 @@ section.sheet.padding-20mm
   .columns.is-mobile.page-header
     img.logo src="#{base_url}/logo_sko.png" alt=""
     h1
-      = note.kind
+      = I18n.t("mongoid.enums.note.kind.#{note.kind}")
   hr
   .columns.is-mobile.content
     .column
