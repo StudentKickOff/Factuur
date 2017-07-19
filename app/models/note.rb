@@ -1,23 +1,21 @@
-class Invoice
+class Note
   include Mongoid::Document
   # created_at, updated_at
   include Mongoid::Timestamps
-  # Dynamic attributes, e.g. invoice[:netto]
-  include Mongoid::Attributes::Dynamic
   # Soft delete
   include Mongoid::Paranoia
   # Factuurtypes
   include Mongoid::Enum
 
-  enum :note_type, [:regular, :credit_note, :income_note]
+  enum :kind, [:note, :credit, :income]
 
-  # Invoices should be immutable and never changed.
+  # Notes should be immutable and never changed.
   validate :force_immutable
   before_create :generate_and_set_pdf
 
-  field :_id, type: String, default: -> { Invoice.next_id }
+  field :_id, type: String, default: -> { Note.next_id }
   field :generated_pdf, type: BSON::Binary
-  field :vat_amount, type: Float, default: 21.0
+  field :vat_percentage, type: BigDecimal, default: 21.0
 
   embeds_many :costs
   accepts_nested_attributes_for :costs
@@ -40,12 +38,12 @@ class Invoice
       output_file = "#{dir}/output.pdf"
 
       s = ApplicationController.render(
-        'invoices/invoice_pdf',
+        'notes/note_pdf',
         layout: 'paper',
         locals: {
           # TODO: make this ready for production
           base_url: 'http://localhost:3000',
-          invoice: self
+          note: self
         }
       )
       File.write(input_file, s)
@@ -93,4 +91,6 @@ class Cost
   field :description, type: String
   field :date, type: Date
   field :amount, type: Integer
+
+  validates_presence_of :description, :date, :amount
 end

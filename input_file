@@ -16,57 +16,57 @@
   font-family: 'LeagueGothic-Regular';
   src: url("/fonts/leaguegothic-regular-webfont.woff2");
 }
-/* line 13, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 13, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 h1, h2, h3, h4, h5, h6 {
   font-variant: small-caps;
   font-family: "LeagueGothic-Regular";
 }
 
-/* line 19, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 19, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet .content {
   font-size: 9pt;
   line-height: 1.2;
 }
-/* line 22, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 22, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet .content h2 {
   color: #e43026;
 }
-/* line 25, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 25, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet .content .unstyled-table td {
   padding: 0;
   border-bottom: none !important;
 }
-/* line 30, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 30, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet h1 {
   font-size: 4rem;
 }
-/* line 33, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 33, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet .page-header {
   align-items: center;
   height: 40mm;
   color: #e43026;
   text-align: center;
 }
-/* line 38, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 38, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet .page-header .logo {
   max-height: 100%;
 }
-/* line 42, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 42, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet hr {
   margin-top: 0;
   margin-bottom: 4.23mm;
 }
-/* line 46, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 46, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet .table {
   margin-bottom: 0;
 }
-/* line 50, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 50, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet .infotable td, .sheet .infotable th {
   padding-top: 1.27mm;
   padding-bottom: 1.27mm;
   text-align: center;
 }
-/* line 56, /Users/don/SKO/Factuur/app/assets/stylesheets/invoice_pdf.css.scss */
+/* line 56, /Users/don/SKO/Factuur/app/assets/stylesheets/note_pdf.css.scss */
 .sheet .factuurtable tbody {
   height: 80mm;
 }

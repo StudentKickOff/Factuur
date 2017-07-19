@@ -5,7 +5,7 @@ class Contact
 
   embeds_one :address
 
-  has_many :invoices
+  has_many :notes
 
   field :name, type: String
   field :vatnumber, type: String

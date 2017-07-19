@@ -1,11 +1,11 @@
 ruby:
-  contact = invoice.contact
+  contact = note.contact
   address = contact.address
 section.sheet.padding-20mm
   .columns.is-mobile.page-header
     img.logo src="#{base_url}/logo_sko.png" alt=""
     h1
-      = note_type invoice.note_type
+      = note.kind
   hr
   .columns.is-mobile.content
     .column
@@ -47,6 +47,7 @@ section.sheet.padding-20mm
             td BTW Nummer Klant
           tr
             td = contact.vatnumber
+
     .column
       table.table.is-bordered.infotable
         thead
@@ -59,10 +60,10 @@ section.sheet.padding-20mm
             th Vervaldatum
         tbody
           tr
-            td = invoice.id
+            td = note.id
             td = contact.id
-            td = Date.today
-            td = Date.today + 30.days
+            td = l Date.today
+            td = l Date.today + 30.days
   .columns.is-mobile.content
     .column
       table.table.is-bordered.factuurtable
@@ -72,7 +73,7 @@ section.sheet.padding-20mm
             th Omschrijving
             th Bedrag
         tbody
-          - invoice.costs.each do |cost|
+          - note.costs.each do |cost|
             tr
               td
                 / 'l' is the rails localization helper
@@ -98,16 +99,16 @@ section.sheet.padding-20mm
           tr
             td NETTO
             td
-              = number_to_currency invoice.net_total
+              = number_to_currency note.net_total
           tr
-            td BTW (#{number_to_percentage invoice.vat_amount, precision: 0})
+            td BTW (#{number_to_percentage note.vat_percentage, precision: 0})
             td
-              = number_to_currency(invoice.net_total * invoice.vat_amount/100)
+              = number_to_currency(note.net_total * note.vat_percentage/100)
           tr
             th Totaal (incl. BTW)
             td
               strong
-                = number_to_currency(invoice.net_total * (1 + invoice.vat_amount/100))
+                = number_to_currency(note.net_total * (1 + note.vat_percentage/100))
   .content
     p
       strong Contact
