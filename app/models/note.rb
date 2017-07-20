@@ -11,30 +11,31 @@ class Note
 
   # Notes should be immutable and never changed.
   validate :force_immutable
-  before_create :generate_and_set_pdf
+
+  # First: calculate totals
+  # Second: generate pdf (needs those totals)
+  before_create :calculate_and_set_totals, :generate_and_set_pdf
 
   field :_id, type: String, default: -> { Note.next_id }
   field :generated_pdf, type: BSON::Binary
   field :vat_percentage, type: BigDecimal, default: 21.0
+
+  # These fields are automatically calculated before creation
+  # They could be methods, but because the costs are immutable, we can
+  # just as well just calculate them once.
+  field :net_total, type: BigDecimal
+  field :vat_total, type: BigDecimal
+  field :gross_total, type: BigDecimal
 
   embeds_many :costs
   accepts_nested_attributes_for :costs
 
   belongs_to :contact
 
-  validates_presence_of :contact
+  validates_presence_of :contact, :vat_percentage
 
-  def net_total
-    costs.map(&:amount).sum
-  end
+  validates_length_of :costs, minimum: 1
 
-  def vat_total
-    net_total * vat_percentage/100
-  end
-
-  def total
-    net_total + vat_total
-  end
 
   def generate_pdf
     res = nil
@@ -87,6 +88,12 @@ class Note
   end
 
   private
+
+  def calculate_and_set_totals
+    self.net_total = costs.map(&:amount).sum
+    self.vat_total = (net_total * (vat_percentage/100)).round(2)
+    self.gross_total = net_total + vat_total
+  end
 
   def generate_and_set_pdf
     self.generated_pdf = BSON::Binary.new(generate_pdf)
