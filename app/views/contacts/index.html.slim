@@ -3,7 +3,7 @@
   table
     thead
       tr
-        th Klantnummer
+        //th Klantnummer
         th Naam
         th Btw-nummer
         th Begunstigde
@@ -15,7 +15,7 @@
     tbody
       - @contacts.each do |contact|
         tr
-          td = contact.id
+          //td = contact.id
           td = contact.name
           td = contact.vatnumber
           td = contact.address.beneficiary
@@ -30,7 +30,7 @@
                   = button_to 'Herstellen', {action: 'unarchive', id: contact}, class: 'button is-warning'
               - else
                 p.control
-                  = link_to 'Details', edit_contact_path(contact), class: 'button is-primary'
+                  = link_to 'Aanpassen', edit_contact_path(contact), class: 'button is-primary'
                 p.control
                   = link_to 'Archiveer', contact, method: :delete, data: { confirm: 'Ben je zeker?' }, class: 'button is-danger'
   br
@@ -40,7 +40,7 @@
         = link_to 'Terug', contacts_url, class: 'button is-link'
     - else
       .control
-        = link_to 'Nieuw Contact', new_contact_path, class: 'button is-primary'
+        = link_to 'Nieuw Contact', new_contact_path, class: 'button is-success'
       .control
         = link_to 'Gearchiveerde contacten', contacts_url(archived: true), class: 'button is-link'
 
