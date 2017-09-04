@@ -1,0 +1,49 @@
+@import 'pdf/fonts';
+
+h1, h2, h3, h4, h5, h6 {
+  font-variant: small-caps;
+  font-family: "LeagueGothic-Regular";
+}
+
+.sheet {
+  .content {
+    font-size: 9pt;
+    line-height: 1.2;
+    h2 {
+      color: #e43026;
+    }
+    .unstyled-table td {
+      padding: 0;
+      border-bottom: none !important;
+    }
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  .page-header {
+    align-items: center;
+    height: 40mm;
+    color: #e43026;
+    text-align: center;
+    .logo {
+      max-height: 100%;
+    }
+  }
+  hr {
+    margin-top: 0;
+    margin-bottom: 4.23mm;
+  }
+  .table {
+    margin-bottom: 0;
+  }
+  .infotable {
+    td, th {
+      padding-top: 1.27mm;
+      padding-bottom: 1.27mm;
+      text-align: center;
+    }
+  }
+  .factuurtable tbody {
+    height: 80mm;
+  }
+}

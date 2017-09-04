@@ -1,0 +1,30 @@
+nl:
+  mongoid:
+    models:
+      contact: "Contact"
+      note: "Factuur"
+      address: "Adres"
+      cost: "Kost"
+    attributes:
+      contact:
+        name: "Naam"
+        vatnumber: "Btw-nummer"
+      address:
+        beneficiary: "Begunstigde"
+        street: "Straat"
+        zip_code: "Postcode"
+        city: "Stad"
+        country: "Land"
+      note:
+        kind: "Factuurtype"
+        vat_percentage: "BTW"
+        costs: "Kosten"
+    enums:
+      note:
+        kind:
+          invoice: "Factuur"
+          credit: "Kredietnota"
+          income: "Inkomstennota"
+  date:
+    formats:
+      default: "%d-%m-%Y"

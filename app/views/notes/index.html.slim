@@ -1,0 +1,34 @@
+.content
+  h1 Facturen #{'(gearchiveerd)' if @archived}
+  table
+    thead
+      tr
+        th Factuurnummer
+        th tav
+        th Aanmaakdatum
+        th Acties
+    tbody
+      - @notes.each do |note|
+        tr
+          td = note.id
+          td = note.contact
+          td = l note.created_at, format: :long
+          td
+            .field.is-grouped
+              - if note.deleted_at
+                p.control = link_to 'Details', note, class: 'button is-primary'
+                p.control = button_to 'Herstellen', {action: 'unarchive', id: note}, class: 'button is-warning'
+              - else
+                p.control = link_to 'Download', note_path(id: note.id, format: :pdf), target: :_blank, class: 'button is-primary'
+                p.control = link_to 'Details', note, class: 'button is-warning'
+                p.control = link_to 'Archiveer', note, method: :delete, data: { confirm: 'Ben je zeker dat je deze factuur wilt archiveren?' }, class: 'button is-danger'
+  br
+  .field.is-grouped
+    - if @archived
+      .control
+        = link_to 'Terug', notes_url, class: 'button is-link'
+    - else
+      .control
+        = link_to 'Nieuwe factuur', new_note_path, class: 'button is-primary'
+      .control
+        = link_to 'Gearchiveerde facturen', notes_url(archived: true), class: 'button is-link'

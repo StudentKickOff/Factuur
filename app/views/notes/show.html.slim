@@ -1,0 +1,12 @@
+.columns
+  .column.is-narrow
+    = @note.created_at
+  .column.note-column
+    |  <object data="
+    = @pdf_path
+    | " type="application/pdf" width="100%" height="100%"> <iframe src="
+    = @pdf_path
+    | " width="100%" height="100%" style="border: none;"> This browser does not support PDFs. Please download the PDF to view it: <a href="
+    = @pdf_path
+    | ">Download PDF
+= link_to 'Back', notes_path
