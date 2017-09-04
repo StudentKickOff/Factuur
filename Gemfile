@@ -83,6 +83,12 @@ group :development, :test do
 
   # Fake stuff
   gem 'faker'
+
+  # Deployment
+  gem "capistrano", "~> 3.9"
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-passenger'
 end
 
 group :development do
