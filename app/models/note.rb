@@ -57,7 +57,8 @@ class Note
       )
       File.write(input_file, s)
 
-      `#{command} #{input_file} #{output_file}`
+      logger.info "Running #{command}"
+      system command, input_file, output_file, out: $stdout, err: :out
 
       res = File.binread(output_file)
     end
