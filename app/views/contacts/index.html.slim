@@ -3,7 +3,7 @@
   table
     thead
       tr
-        th Klantnummer
+        //th Klantnummer
         th Naam
         th Btw-nummer
         th Begunstigde
@@ -15,7 +15,7 @@
     tbody
       - @contacts.each do |contact|
         tr
-          td = contact.id
+          //td = contact.id
           td = contact.name
           td = contact.vatnumber
           td = contact.address.beneficiary
