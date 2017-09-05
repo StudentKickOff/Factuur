@@ -44,7 +44,7 @@ class Note
     dir = Dir.mktmpdir
     # TODO: Put this in a config
     # command = 'electron-pdf'
-    command = 'node_modules/.bin/electron-pdf'
+    exe = 'node_modules/.bin/electron-pdf'
     input_file = "#{dir}/input.html"
     output_file = "#{dir}/output.pdf"
 
@@ -58,8 +58,9 @@ class Note
     File.write(input_file, s)
 
     logger.info '======'
-    logger.info "Running #{command}"
-    Open3.popen3("#{command} #{input_file} #{output_file}") do |_, out, err, wait_thr|
+    command = "#{exe} #{input_file} #{output_file}"
+    logger.info "Running '#{command}'"
+    Open3.popen3(command) do |_, out, err, wait_thr|
       logger.info "STDOUT: #{out.read}"
       logger.info "STDERR: #{err.read}"
 
