@@ -1,3 +1,5 @@
+require 'open3'
+
 class Note
   include Mongoid::Document
   # created_at, updated_at
@@ -41,7 +43,7 @@ class Note
     Dir.mktmpdir do |dir|
       # TODO: Put this in a config
       # command = 'electron-pdf'
-      command = 'node_modules/electron-pdf/cli.js'
+      command = 'node_modules/.bin/electron-pdf'
       input_file = "#{dir}/input.html"
       output_file = "#{dir}/output.pdf"
 
@@ -56,11 +58,17 @@ class Note
 
       logger.info '======'
       logger.info "Running #{command}"
-      stdout = system `#{command} #{input_file} #{output_file}`
-      logger.info stdout
-      logger.info '======'
+      Open3.popen3("#{command} #{input_file} #{output_file}") do |_, out, err, wait_thr|
+        logger.info "STDOUT: #{out.read}"
+        logger.info "STDERR: #{err.read}"
 
-      res = File.binread(output_file)
+        if wait_thr.value == 0
+          res = File.binread(output_file)
+        else
+          errors.add :generated_pdf, 'Error creating PDF. Check logs.'
+        end
+      end
+      logger.info '======'
     end
 
     res
