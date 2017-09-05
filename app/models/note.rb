@@ -36,7 +36,6 @@ class Note
 
   validates_length_of :costs, minimum: 1
 
-
   def generate_pdf
     res = nil
     Dir.mktmpdir do |dir|
@@ -57,8 +56,11 @@ class Note
       )
       File.write(input_file, s)
 
+      logger.ingo '======'
       logger.info "Running #{command}"
-      system command, input_file, output_file, out: $stdout, err: :out
+      stdout = system `#{command} #{input_file} #{output_file}`
+      logger.info stdout
+      logger.info '======'
 
       res = File.binread(output_file)
     end
