@@ -1,4 +1,5 @@
 require 'open3'
+require 'tmpdir'
 
 class Note
   include Mongoid::Document
