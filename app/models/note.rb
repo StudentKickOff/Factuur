@@ -49,8 +49,6 @@ class Note
         'notes/note_pdf',
         layout: 'paper',
         locals: {
-          # TODO: make this ready for production
-          base_url: 'http://localhost:3000',
           note: self
         }
       )
