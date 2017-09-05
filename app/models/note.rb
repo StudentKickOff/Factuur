@@ -44,7 +44,7 @@ class Note
     dir = Dir.mktmpdir
     # TODO: Put this in a config
     # command = 'electron-pdf'
-    exe = 'node_modules/.bin/electron-pdf'
+    exe = 'xvfb-run -n 9 node_modules/.bin/electron-pdf'
     input_file = "#{dir}/input.html"
     output_file = "#{dir}/output.pdf"
 
