@@ -56,7 +56,7 @@ class Note
       )
       File.write(input_file, s)
 
-      logger.ingo '======'
+      logger.info '======'
       logger.info "Running #{command}"
       stdout = system `#{command} #{input_file} #{output_file}`
       logger.info stdout
