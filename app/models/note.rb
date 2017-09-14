@@ -82,12 +82,12 @@ class Note
     boy = dt.beginning_of_year
     eoy = dt.end_of_year
 
-    results = unscoped.where(:created_at.gte => boy).and(:created_at.lte => eoy)
+    results = unscoped.where(:created_at.gte => boy).and(:created_at.lte => eoy).order_by(created_at: :desc)
 
     if results.empty?
       "#{dt.year}-001"
     else
-      results.last.id.next
+      results.first.id.next
     end
   end
 
