@@ -83,13 +83,12 @@ class Note
     eoy = dt.end_of_year
 
     results = unscoped.where(:created_at.gte => boy).and(:created_at.lte => eoy)
-    idx = if results.empty?
-            '01'
-          else
-            format('%02i', results.last.id.split('-')[1].to_i + 1)
-          end
 
-    "#{dt.year}-#{idx}"
+    if results.empty?
+      "#{dt.year}-001"
+    else
+      results.last.id.next
+    end
   end
 
   # Because mongoid-enums doesn't to I18N

@@ -11,6 +11,11 @@
               li
                 = message
     .field
+      = f.label :id, class: 'label'
+      .control
+        = f.text_field :id, class: 'input'
+
+    .field
       = f.label :contact, class: 'label'
       .control
         = f.collection_select(:contact, Contact.all, :id, :name, {}, id: 'e1', class: 'input')

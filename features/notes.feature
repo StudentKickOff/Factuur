@@ -8,7 +8,7 @@ Feature: Working with notes
     When we try to edit the note
     Then saving should not succeed
 
-  Scenario: An note should generate a pdf file
+  Scenario: A note should generate a pdf file
     Then a pdf should have been generated alongside it
 
   Scenario: Creating an note
