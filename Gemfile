@@ -37,7 +37,7 @@ gem 'bson_ext'
 gem 'mongoid_paranoia'
 
 # Mongoid enums
-gem 'mongoid-enum', git: 'https://github.com/monster-media/mongoid-enum'
+gem 'mongoid-enum', git: 'https://github.com/StudentKickOff/mongoid-enum'
 
 # Bulma is CSS bae
 gem 'bulma-rails'
