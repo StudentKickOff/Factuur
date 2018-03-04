@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/monster-media/mongoid-enum
+  remote: https://github.com/StudentKickOff/mongoid-enum
   revision: 270323f3d71d837e04e55a0cae83b537722819b9
   specs:
     mongoid-enum (0.4.0)
@@ -351,4 +351,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.1
