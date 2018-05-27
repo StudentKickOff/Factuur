@@ -19,25 +19,25 @@ class Note
   # Second: generate pdf (needs those totals)
   before_create :calculate_and_set_totals, :generate_and_set_pdf
 
-  field :_id, type: String, default: -> { Note.next_id }
-  field :generated_pdf, type: BSON::Binary
+  field :_id,            type: String,     default: -> { Note.next_id }
+  field :generated_pdf,  type: BSON::Binary
   field :vat_percentage, type: BigDecimal, default: 21.0
 
   # These fields are automatically calculated before creation
   # They could be methods, but because the costs are immutable, we can
   # just as well just calculate them once.
-  field :net_total, type: BigDecimal
-  field :vat_total, type: BigDecimal
+  field :net_total,   type: BigDecimal
+  field :vat_total,   type: BigDecimal
   field :gross_total, type: BigDecimal
+
+  validates :contact, :vat_percentage, presence: true
+
+  validates :costs, length: { minimum: 1 }
 
   embeds_many :costs
   accepts_nested_attributes_for :costs
 
   belongs_to :contact
-
-  validates_presence_of :contact, :vat_percentage
-
-  validates_length_of :costs, minimum: 1
 
   def generate_pdf
     res = nil
@@ -111,19 +111,9 @@ class Note
   end
 
   def force_immutable
-    return if !changed? || !persisted?
+    return unless changed? && persisted?
 
     errors.add(:base, :immutable)
     reload
   end
-end
-
-class Cost
-  include Mongoid::Document
-
-  field :description, type: String
-  field :date, type: Date, default: -> { Date.today }
-  field :amount, type: BigDecimal, default: 0
-
-  validates_presence_of :description, :date, :amount
 end
