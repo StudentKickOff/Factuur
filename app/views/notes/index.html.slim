@@ -17,7 +17,7 @@
             .field.is-grouped
               - if note.deleted_at
                 p.control = link_to 'Details', note, class: 'button is-primary'
-                p.control = button_to 'Herstellen', {action: 'unarchive', id: note}, class: 'button is-warning'
+                p.control = button_to 'Herstellen', unarchive_note_path(note), class: 'button is-warning'
               - else
                 p.control = link_to 'Download', note_path(id: note.id, format: :pdf), target: :_blank, class: 'button is-primary'
                 p.control = link_to 'Details', note, class: 'button is-warning'
