@@ -2,6 +2,10 @@ tr.nested-fields
   td
     .field
       p.control
+        = f.number_field :amount, step: 1, label: false, class: 'input'
+  td
+    .field
+      p.control
         = f.date_field :date, label: false, value: Date.today.strftime, class: 'input'
 
   td
@@ -12,7 +16,7 @@ tr.nested-fields
   td
     .field
       p.control.has-icon
-        = f.number_field :amount, step: 0.01, label: false, class: 'input'
+        = f.number_field :price, step: 0.01, label: false, class: 'input'
         span.icon.is-small.is-left
           = fa_icon 'euro'
   td

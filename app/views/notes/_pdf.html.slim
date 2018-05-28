@@ -71,18 +71,24 @@ section.sheet.padding-20mm
         thead
           tr
             th Datum
+            th Aantal
             th Omschrijving
-            th Bedrag
+            th Prijs
+            th Netto
         tbody
           - note.costs.each do |cost|
             tr
+              td
+                = cost.amount
               td
                 / 'l' is the rails localization helper
                 = l cost.date
               td
                 = cost.description
               td
-                = number_to_currency cost.amount
+                = number_to_currency cost.price
+              td
+                = number_to_currency cost.amount * cost.price
   .columns.is-mobile.content
     .column
       p Gelieve binnen 30 kalenderdagen na factuurdatum te betalen op onderstaande rekening met vermelding van factuurnummer.

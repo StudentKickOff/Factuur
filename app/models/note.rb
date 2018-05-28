@@ -101,7 +101,7 @@ class Note
   private
 
   def calculate_and_set_totals
-    self.net_total = costs.map(&:amount).sum
+    self.net_total = costs.map{ |c| c.amount * c.price }.sum
     self.vat_total = (net_total * (vat_percentage/100)).round(2)
     self.gross_total = net_total + vat_total
   end
