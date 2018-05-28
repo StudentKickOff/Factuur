@@ -1,5 +1,14 @@
 .content
   h1 Facturen #{'(gearchiveerd)' if @archived}
+  .field.is-grouped
+    - if @archived
+      .control
+        = link_to 'Terug', notes_url, class: 'button is-link'
+    - else
+      .control
+        = link_to 'Nieuwe factuur', new_note_path, class: 'button is-success'
+      .control
+        = link_to 'Gearchiveerde facturen', notes_url(archived: true), class: 'button is-link'
   table
     thead
       tr
