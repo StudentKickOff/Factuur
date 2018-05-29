@@ -12,7 +12,7 @@ tr.nested-fields
   td
     .field
       p.control
-        = f.select(:vat, options_for_select(Cost.vat_i18n_select_options, { selected: :v21 }), {}, class: 'input')
+        = f.select(:vat, options_for_select(Cost.vat_i18n_select_options, { selected: f.object.vat }), {}, class: 'input')
 
   td
     .field
