@@ -17,20 +17,12 @@ class Note
 
   # First: calculate totals
   # Second: generate pdf (needs those totals)
-  before_create :calculate_and_set_totals, :generate_and_set_pdf
+  before_create :generate_and_set_pdf
 
   field :_id,            type: String,     default: -> { Note.next_id }
   field :generated_pdf,  type: BSON::Binary
-  field :vat_percentage, type: BigDecimal, default: 21.0
 
-  # These fields are automatically calculated before creation
-  # They could be methods, but because the costs are immutable, we can
-  # just as well just calculate them once.
-  field :net_total,   type: BigDecimal
-  field :vat_total,   type: BigDecimal
-  field :gross_total, type: BigDecimal
-
-  validates :contact, :vat_percentage, presence: true
+  validates :contact, presence: true
 
   validates :costs, length: { minimum: 1 }
 
@@ -99,12 +91,6 @@ class Note
   end
 
   private
-
-  def calculate_and_set_totals
-    self.net_total = costs.map{ |c| c.amount * c.price }.sum
-    self.vat_total = (net_total * (vat_percentage/100)).round(2)
-    self.gross_total = net_total + vat_total
-  end
 
   def generate_and_set_pdf
     self.generated_pdf = BSON::Binary.new(generate_pdf)

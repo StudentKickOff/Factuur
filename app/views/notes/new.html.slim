@@ -20,17 +20,12 @@
           = f.select(:kind, options_for_select(Note.kind_i18n_select_options), class: 'input')
 
     .field
-      = f.label :vat_percentage, class: 'label'
-      .control
-        = f.number_field :vat_percentage, in: 0..100, class: 'input'
-
-    .field
       = f.label :costs, class: 'label'
       table.table
         thead
           th Aantal
-          th Datum
           th width='60%' Omschrijving
+          th B.T.W.
           th Bedrag
           th
             tbody.costs
@@ -38,7 +33,7 @@
             = render 'cost_fields', f: cost
         tfoot
           tr
-            th colspan='4'
+            th colspan='5'
               = link_to_add_association f, :costs, data: {"association-insertion-node" => "tbody.costs"}, class: 'button is-success is-outlined' do
                 span.icon
                   = fa_icon 'plus'

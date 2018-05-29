@@ -3,15 +3,16 @@ tr.nested-fields
     .field
       p.control
         = f.number_field :amount, step: 1, label: false, class: 'input'
-  td
-    .field
-      p.control
-        = f.date_field :date, label: false, value: Date.today.strftime, class: 'input'
 
   td
     .field
       p.control
         = f.text_field :description, label: false, class: 'input'
+
+  td
+    .field
+      p.control
+        = f.select(:vat, options_for_select(Cost.vat_i18n_select_options, { selected: :v21 }), {}, class: 'input')
 
   td
     .field

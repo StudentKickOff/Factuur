@@ -2,6 +2,8 @@ ruby:
   sko_logo = Base64.encode64 Rails.application.assets['logo_sko.png'].to_s
   contact = note.contact
   address = contact.address
+  net_total = note.costs.map{ |c| c.price * c.amount }.sum
+  vat_group = Hash[note.costs.group_by(&:vat).map{ |vat, costs| [vat, costs.map{ |cost| cost.amount * cost.price * cost.vat[1..-1].to_i / 100 }.sum.round(2)] }]
 section.sheet.padding-20mm
   .columns.is-mobile.page-header
     img.logo src="data:image/png;base64,#{sko_logo}" alt=""
@@ -70,10 +72,10 @@ section.sheet.padding-20mm
       table.table.is-bordered.factuurtable
         thead
           tr
-            th Datum
             th Aantal
             th Omschrijving
             th Prijs
+            th BTW
             th Netto
         tbody
           - note.costs.each do |cost|
@@ -81,14 +83,17 @@ section.sheet.padding-20mm
               td
                 = cost.amount
               td
-                / 'l' is the rails localization helper
-                = l cost.date
-              td
                 = cost.description
               td
                 = number_to_currency cost.price
               td
+                = I18n.t("mongoid.enums.cost.vat.#{cost.vat}")
+              td
                 = number_to_currency cost.amount * cost.price
+          tr
+            td[colspan="2"]
+            td[colspan="2"] Subtotaal
+            td = number_to_currency net_total
   .columns.is-mobile.content
     .column
       p Gelieve binnen 30 kalenderdagen na factuurdatum te betalen op onderstaande rekening met vermelding van factuurnummer.
@@ -103,19 +108,16 @@ section.sheet.padding-20mm
     .column
       table.table.is-bordered
         tbody
-          tr
-            td NETTO
-            td
-              = number_to_currency note.net_total
-          tr
-            td BTW (#{number_to_percentage note.vat_percentage, precision: 0})
-            td
-              = number_to_currency note.vat_total
+          - Cost::VAT.each do |vat|
+            - if vat_group.has_key? vat
+              tr
+                td  = I18n.t("mongoid.enums.cost.vat.#{vat}")
+                td = number_to_currency vat_group[vat]
           tr
             th Totaal (incl. BTW)
             td
               strong
-                = number_to_currency note.gross_total
+                = number_to_currency vat_group.values.sum + net_total
   .content
     p
       strong Contact

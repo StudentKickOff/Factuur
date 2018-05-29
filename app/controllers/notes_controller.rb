@@ -88,8 +88,7 @@ class NotesController < ApplicationController
       :id,
       :contact,
       :kind,
-      :vat_percentage,
-      costs_attributes: [:amount, :description, :price, :date]
+      costs_attributes: [:amount, :description, :price, :vat]
     )
   end
 end
