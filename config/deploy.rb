@@ -2,7 +2,7 @@
 lock '3.9.0'
 
 set :application, 'factuur.studentkickoff.be'
-set :repo_url, 'git@github.com:StudentKickOff/Factuur.git'
+set :repo_url, 'https://github.com/StudentKickOff/Factuur.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
