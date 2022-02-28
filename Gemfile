@@ -90,6 +90,9 @@ group :development, :test do
   gem 'capistrano-bundler', '~> 1.2'
   gem 'capistrano-passenger'
   gem "capistrano-rails"
+  gem "ed25519", "~> 1.2"
+  gem "bcrypt_pbkdf", "~> 1.1"
+  gem "rbnacl", "<5.0.0"
 end
 
 group :development do
